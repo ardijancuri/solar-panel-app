@@ -44,6 +44,8 @@ const languages: { code: Lang; label: string }[] = [
   { code: "en", label: "EN" }
 ];
 
+const whatsappHref = "https://wa.me/38970123456";
+
 const dictionaries = {
   mk: {
     nav: {
@@ -1171,6 +1173,16 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      <a
+        className="whatsapp-float gsap-load"
+        href={whatsappHref}
+        target="_blank"
+        rel="noreferrer"
+        aria-label="Open WhatsApp chat with Volnix"
+      >
+        <span className="whatsapp-bubble" aria-hidden="true" />
+      </a>
     </main>
   );
 }
