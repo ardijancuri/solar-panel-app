@@ -1,0 +1,11 @@
+.next
+node_modules
+out
+.env*
+.npm-cache
+.next-dev*.log
+.chrome-qa
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
