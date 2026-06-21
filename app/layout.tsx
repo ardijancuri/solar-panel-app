@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Solvix - Соларна енергија",
+  title: "Volnix - Соларна енергија",
   description:
-    "Solvix нуди модерни соларни решенија за домови, бизниси и заедници."
+    "Volnix нуди модерни соларни решенија за домови, бизниси и заедници."
 };
 
 export default function RootLayout({

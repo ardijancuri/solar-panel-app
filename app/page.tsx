@@ -1,6 +1,7 @@
 "use client";
 
 import {
+  type CSSProperties,
   FormEvent,
   useEffect,
   useLayoutEffect,
@@ -23,7 +24,6 @@ import {
   Menu,
   Phone,
   PlugZap,
-  Sun,
   X,
   Zap
 } from "lucide-react";
@@ -56,7 +56,7 @@ const dictionaries = {
       eyebrow: "Нова енергија за вашиот систем",
       title: "Чиста обновлива енергија без граници",
       body:
-        "Solvix нуди доверливи соларни решенија со високи перформанси за домови, бизниси и позелена иднина.",
+        "Volnix нуди доверливи соларни решенија со високи перформанси за домови, бизниси и позелена иднина.",
       cta: "Бесплатна консултација",
       stats: [
         { value: "10k+", label: "инсталации" },
@@ -67,7 +67,7 @@ const dictionaries = {
     partners: ["Lago ipsum", "Logipsum", "logo ipsum", "Logipsum", "Logoipsum"],
     benefits: {
       eyebrow: "/ придобивки",
-      title: "Придобивките од соларна енергија со Solvix",
+      title: "Придобивките од соларна енергија со Volnix",
       body:
         "Ослободете ја моќта на соларната енергија со решенија создадени за трајна вредност.",
       items: [
@@ -141,7 +141,7 @@ const dictionaries = {
       title: "Успешни приказни",
       quoteTitle: "Голема промена за мојот дом!",
       quote:
-        "Преминот кон Solvix беше најдобрата одлука. Сметката за струја значително се намали, а сега со гордост придонесуваме за почиста планета. Тимот беше професионален, а инсталацијата помина беспрекорно.",
+        "Преминот кон Volnix беше најдобрата одлука. Сметката за струја значително се намали, а сега со гордост придонесуваме за почиста планета. Тимот беше професионален, а инсталацијата помина беспрекорно.",
       author: "John Darrell",
       location: "Лос Анџелес, CA"
     },
@@ -168,12 +168,12 @@ const dictionaries = {
       title: "Често поставувани прашања",
       items: [
         {
-          q: "Што ја прави Solvix различна од другите провајдери?",
+          q: "Што ја прави Volnix различна од другите провајдери?",
           a:
             "Ние комбинираме внимателен проект, квалитетни компоненти и локална поддршка за систем што работи долгорочно."
         },
         {
-          q: "Какви соларни решенија нуди Solvix?",
+          q: "Какви соларни решенија нуди Volnix?",
           a:
             "Нудиме системи за домови, компании, батериско складирање и EV полначи поврзани со соларна енергија."
         },
@@ -183,7 +183,7 @@ const dictionaries = {
             "Го анализираме објектот, потрошувачката и целите, па подготвуваме јасна понуда со очекувани заштеди."
         },
         {
-          q: "Колку чини соларен систем со Solvix?",
+          q: "Колку чини соларен систем со Volnix?",
           a:
             "Цената зависи од големината и опремата. По консултација добивате точна пресметка и план за поврат."
         }
@@ -226,7 +226,7 @@ const dictionaries = {
       send: "Испрати",
       sent: "Испратено",
       socials: "Следете не",
-      rights: "© 2026 Solvix Solar Energy. Сите права се задржани.",
+      rights: "© 2026 Volnix Solar Energy. Сите права се задржани.",
       policy: "Политика за приватност",
       terms: "Услови за користење"
     }
@@ -242,7 +242,7 @@ const dictionaries = {
       eyebrow: "Energji e re per sistemin tuaj",
       title: "Energji e paster e rinovueshme pa kufi",
       body:
-        "Solvix ofron zgjidhje solare te besueshme dhe me performance te larte per shtepi, biznese dhe nje te ardhme me te gjelber.",
+        "Volnix ofron zgjidhje solare te besueshme dhe me performance te larte per shtepi, biznese dhe nje te ardhme me te gjelber.",
       cta: "Konsultim falas",
       stats: [
         { value: "10k+", label: "instalime" },
@@ -253,7 +253,7 @@ const dictionaries = {
     partners: ["Lago ipsum", "Logipsum", "logo ipsum", "Logipsum", "Logoipsum"],
     benefits: {
       eyebrow: "/ perfitime",
-      title: "Perfitimet e energjise solare me Solvix",
+      title: "Perfitimet e energjise solare me Volnix",
       body:
         "Shfrytezoni fuqine e energjise solare me zgjidhje te krijuara per vlere afatgjate.",
       items: [
@@ -323,7 +323,7 @@ const dictionaries = {
       title: "Histori suksesi",
       quoteTitle: "Ndryshim i madh per shtepine time!",
       quote:
-        "Kalimi ne Solvix ishte vendimi me i mire. Fatura e energjise ra ndjeshem dhe tani kontribuojme per nje planet me te paster. Ekipi ishte profesional dhe instalimi shkoi pa probleme.",
+        "Kalimi ne Volnix ishte vendimi me i mire. Fatura e energjise ra ndjeshem dhe tani kontribuojme per nje planet me te paster. Ekipi ishte profesional dhe instalimi shkoi pa probleme.",
       author: "John Darrell",
       location: "Los Angeles, CA"
     },
@@ -350,12 +350,12 @@ const dictionaries = {
       title: "Pyetje te shpeshta",
       items: [
         {
-          q: "Cfare e ben Solvix ndryshe nga ofruesit e tjere?",
+          q: "Cfare e ben Volnix ndryshe nga ofruesit e tjere?",
           a:
             "Kombinojme projektim te kujdesshem, komponente cilesore dhe mbeshtetje lokale."
         },
         {
-          q: "Cfare zgjidhjesh solare ofron Solvix?",
+          q: "Cfare zgjidhjesh solare ofron Volnix?",
           a:
             "Ofrojme sisteme per shtepi, biznese, bateri dhe karikues EV te lidhur me energjine solare."
         },
@@ -365,7 +365,7 @@ const dictionaries = {
             "Analizojme objektin, konsumin dhe qellimet, pastaj pergatisim oferte te qarte."
         },
         {
-          q: "Sa kushton nje sistem solar Solvix?",
+          q: "Sa kushton nje sistem solar Volnix?",
           a:
             "Varet nga madhesia dhe pajisjet. Pas konsultimit merrni kalkulim te sakte."
         }
@@ -407,7 +407,7 @@ const dictionaries = {
       send: "Dergo",
       sent: "Derguar",
       socials: "Na ndiqni",
-      rights: "© 2026 Solvix Solar Energy. Te gjitha te drejtat e rezervuara.",
+      rights: "© 2026 Volnix Solar Energy. Te gjitha te drejtat e rezervuara.",
       policy: "Privatesia",
       terms: "Kushtet"
     }
@@ -423,7 +423,7 @@ const dictionaries = {
       eyebrow: "New energy for our system",
       title: "Clean renewable limitless energy",
       body:
-        "Solvix provides reliable, high-performance clean energy solutions for homes, businesses, and a greener future.",
+        "Volnix provides reliable, high-performance clean energy solutions for homes, businesses, and a greener future.",
       cta: "Get free consultation",
       stats: [
         { value: "10k+", label: "installations" },
@@ -434,7 +434,7 @@ const dictionaries = {
     partners: ["Lago ipsum", "Logipsum", "logo ipsum", "Logipsum", "Logoipsum"],
     benefits: {
       eyebrow: "/ benefits",
-      title: "The benefits of going solar with Solvix",
+      title: "The benefits of going solar with Volnix",
       body:
         "Unlock the power of solar energy with smart solutions engineered for long-term value.",
       items: [
@@ -504,7 +504,7 @@ const dictionaries = {
       title: "Success stories",
       quoteTitle: "A game-changer for my home!",
       quote:
-        "Switching to Solvix was one of the best decisions for my family. Our electricity bills dropped by nearly 70%, and we feel great knowing we're contributing to a cleaner planet. The team was professional, and the installation process was seamless.",
+        "Switching to Volnix was one of the best decisions for my family. Our electricity bills dropped by nearly 70%, and we feel great knowing we're contributing to a cleaner planet. The team was professional, and the installation process was seamless.",
       author: "John Darrell",
       location: "Los Angeles, CA"
     },
@@ -531,12 +531,12 @@ const dictionaries = {
       title: "Frequently asked questions",
       items: [
         {
-          q: "What makes Solvix different from other solar providers?",
+          q: "What makes Volnix different from other solar providers?",
           a:
             "We combine careful design, quality components, and local support for systems built to last."
         },
         {
-          q: "What types of solar solutions does Solvix offer?",
+          q: "What types of solar solutions does Volnix offer?",
           a:
             "We provide residential, commercial, battery storage, and EV charging solutions."
         },
@@ -546,7 +546,7 @@ const dictionaries = {
             "We analyze your site, usage, and goals, then prepare a clear plan and savings estimate."
         },
         {
-          q: "How much does a Solvix solar system cost?",
+          q: "How much does a Volnix solar system cost?",
           a:
             "Pricing depends on system size and equipment. After consultation, you receive a precise estimate."
         }
@@ -588,7 +588,7 @@ const dictionaries = {
       send: "Send",
       sent: "Sent",
       socials: "Follow us",
-      rights: "© 2026 Solvix Solar Energy. All rights reserved.",
+      rights: "© 2026 Volnix Solar Energy. All rights reserved.",
       policy: "Privacy policy",
       terms: "Terms of use"
     }
@@ -600,6 +600,8 @@ const solutionIcons = [HomeIcon, Briefcase, BatteryCharging, PlugZap];
 
 export default function Home() {
   const rootRef = useRef<HTMLElement | null>(null);
+  const motionPrepRef = useRef(true);
+  const didMountProjectRef = useRef(false);
   const [lang, setLang] = useState<Lang>("mk");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(1);
@@ -610,6 +612,9 @@ export default function Home() {
   const t = dictionaries[lang];
   const activeLanguage =
     languages.find((language) => language.code === lang) ?? languages[0];
+  const initialHeroMediaStyle: CSSProperties | undefined = motionPrepRef.current
+    ? { clipPath: "inset(0 0 0 100%)" }
+    : undefined;
 
   const navItems = useMemo(
     () => [
@@ -654,64 +659,72 @@ export default function Home() {
     gsap.registerPlugin(ScrollTrigger);
 
     const ctx = gsap.context(() => {
-      const revealables = gsap.utils.toArray<HTMLElement>("[data-gsap-reveal]");
+      const revealables = gsap.utils.toArray<HTMLElement>(
+        root.querySelectorAll("[data-gsap-reveal]")
+      );
+
+      const finishMotionPrep = () => {
+        motionPrepRef.current = false;
+        root.classList.remove("is-motion-prep");
+      };
 
       if (prefersReducedMotion) {
-        gsap.set([".site-header", ".gsap-load", ".hero-media", ...revealables], {
-          autoAlpha: 1,
-          clearProps: "all"
-        });
+        finishMotionPrep();
+        root.classList.remove("is-gsap-loading");
+        gsap.set(
+          [
+            ".site-header",
+            ".gsap-load",
+            ".hero-media",
+            ".hero-media picture > img",
+            ...revealables
+          ],
+          {
+            clearProps: "all"
+          }
+        );
         return;
       }
 
-      gsap.set(".site-header", { autoAlpha: 0, y: -8 });
-      gsap.set(".gsap-load", { autoAlpha: 0, y: 18 });
-      gsap.set(".hero-media", {
-        autoAlpha: 0,
-        clipPath: "inset(0 0 0 18%)",
-        scale: 0.985,
-        transformOrigin: "50% 50%"
-      });
-      gsap.set(".hero-media picture > img", { scale: 1.08 });
+      root.classList.add("is-gsap-loading");
+      gsap.set(".site-header", { y: -8 });
+      gsap.set(".gsap-load", { y: 16 });
+      gsap.set(".hero-media", { clipPath: "inset(0 0 0 100%)" });
       gsap.set(revealables, { autoAlpha: 0, y: 26 });
+      finishMotionPrep();
 
       const loadTimeline = gsap.timeline({
-        defaults: { ease: "power3.out" }
+        defaults: { ease: "power3.out" },
+        onComplete: () => {
+          root.classList.remove("is-gsap-loading");
+        }
       });
 
       loadTimeline
         .to(".site-header", {
-          autoAlpha: 1,
           y: 0,
-          duration: 0.48
+          duration: 0.42,
+          clearProps: "transform"
         })
         .to(
           ".gsap-load",
           {
-            autoAlpha: 1,
             y: 0,
-            duration: 0.58,
-            stagger: 0.075
+            duration: 0.52,
+            stagger: 0.06,
+            clearProps: "transform"
           },
           "-=0.14"
         )
         .to(
           ".hero-media",
           {
-            autoAlpha: 1,
             clipPath: "inset(0 0 0 0%)",
-            scale: 1,
-            duration: 0.95
+            duration: 0.9,
+            ease: "power2.out",
+            clearProps: "clipPath"
           },
-          "-=0.46"
-        )
-        .to(
-          ".hero-media picture > img",
-          {
-            scale: 1.01,
-            duration: 1.15
-          },
-          "<"
+          0.08
         )
         .add(() => ScrollTrigger.refresh(), "-=0.2");
 
@@ -725,7 +738,8 @@ export default function Home() {
             duration: 0.68,
             stagger: 0.06,
             ease: "power3.out",
-            overwrite: true
+            overwrite: true,
+            clearProps: "opacity,visibility,transform"
           });
         }
       });
@@ -750,7 +764,7 @@ export default function Home() {
         { autoAlpha: 1, y: 0, scale: 1, duration: 0.28, ease: "power3.out" }
       );
       gsap.fromTo(
-        ".mobile-panel a, .mobile-panel .mobile-languages",
+        ".mobile-panel a",
         { autoAlpha: 0, x: -8 },
         {
           autoAlpha: 1,
@@ -766,6 +780,11 @@ export default function Home() {
   }, [mobileOpen]);
 
   useEffect(() => {
+    if (!didMountProjectRef.current) {
+      didMountProjectRef.current = true;
+      return;
+    }
+
     if (!rootRef.current) return;
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -790,13 +809,14 @@ export default function Home() {
   }, [activeProject]);
 
   return (
-    <main id="home" className="site-shell" ref={rootRef}>
+    <main
+      id="home"
+      className={`site-shell${motionPrepRef.current ? " is-motion-prep" : ""}`}
+      ref={rootRef}
+    >
       <header className="site-header">
-        <a href="#home" className="brand" aria-label="Solvix">
-          <span className="brand-mark">
-            <Sun size={16} strokeWidth={2.8} />
-          </span>
-          <span>Solvix</span>
+        <a href="#home" className="brand" aria-label="Volnix">
+          <img className="brand-logo" src="/images/volnix-logo.png" alt="" />
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
@@ -810,7 +830,7 @@ export default function Home() {
         <div className="header-actions">
           <button
             type="button"
-            className="language-circle"
+            className="language-circle desktop-language-switcher"
             aria-label={`Language: ${activeLanguage.label}`}
             onClick={cycleLanguage}
           >
@@ -821,15 +841,33 @@ export default function Home() {
           </a>
         </div>
 
-        <button
-          className="menu-button"
-          type="button"
-          aria-label={mobileOpen ? "Close menu" : "Open menu"}
-          aria-expanded={mobileOpen}
-          onClick={() => setMobileOpen((value) => !value)}
-        >
-          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
-        </button>
+        <div className="mobile-header-actions">
+          <div
+            className="mobile-language-switcher"
+            aria-label="Language selector"
+          >
+            {languages.map((language) => (
+              <button
+                key={language.code}
+                type="button"
+                className={language.code === lang ? "active" : ""}
+                onClick={() => setLang(language.code)}
+              >
+                {language.label}
+              </button>
+            ))}
+          </div>
+
+          <button
+            className="menu-button"
+            type="button"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
+            onClick={() => setMobileOpen((value) => !value)}
+          >
+            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
       </header>
 
       {mobileOpen ? (
@@ -843,18 +881,6 @@ export default function Home() {
               {item.label}
             </a>
           ))}
-          <div className="mobile-languages">
-            {languages.map((language) => (
-              <button
-                key={language.code}
-                type="button"
-                className={language.code === lang ? "active" : ""}
-                onClick={() => setLang(language.code)}
-              >
-                {language.label}
-              </button>
-            ))}
-          </div>
         </div>
       ) : null}
 
@@ -880,10 +906,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-media">
+        <div className="hero-media" style={initialHeroMediaStyle}>
           <picture>
             <source media="(max-width: 980px)" srcSet="/images/hero-installer.jpeg" />
-            <img src="/images/hero-installer.jpeg" alt="" />
+            <img
+              src="/images/hero-installer.jpeg"
+              alt=""
+              loading="eager"
+              fetchPriority="high"
+              decoding="async"
+            />
           </picture>
         </div>
       </section>
@@ -938,7 +970,7 @@ export default function Home() {
           {t.solutions.items.map((item, index) => {
             const Icon = solutionIcons[index];
             return (
-              <article className="solution-card" key={item.title} data-gsap-reveal>
+              <article className="solution-card" key={item.title}>
                 <Icon size={32} />
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
@@ -956,7 +988,6 @@ export default function Home() {
               <article
                 className={`project-row ${isActive ? "active" : ""}`}
                 key={project.title}
-                data-gsap-reveal
               >
                 <button
                   type="button"
@@ -1018,7 +1049,7 @@ export default function Home() {
             const open = openFaqs.includes(index);
             const answerId = `faq-answer-${index}`;
             return (
-              <article className="faq-item" key={item.q} data-gsap-reveal>
+              <article className="faq-item" key={item.q}>
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
@@ -1047,7 +1078,7 @@ export default function Home() {
         <p className="eyebrow">{t.cta.eyebrow}</p>
         <h2>{t.cta.title}</h2>
         <p>{t.cta.body}</p>
-        <a href="mailto:hello@solvix.example" className="primary-cta">
+        <a href="mailto:hello@volnix.example" className="primary-cta">
           {t.cta.button}
           <span>
             <ArrowRight size={15} />
@@ -1058,11 +1089,8 @@ export default function Home() {
       <footer className="footer" data-gsap-reveal>
         <div className="footer-grid">
           <div className="footer-brand">
-            <a href="#home" className="brand light" aria-label="Solvix">
-              <span className="brand-mark">
-                <Sun size={16} strokeWidth={2.8} />
-              </span>
-              <span>Solvix</span>
+            <a href="#home" className="brand light" aria-label="Volnix">
+              <img className="brand-logo" src="/images/volnix-logo.png" alt="" />
             </a>
             <p>{t.footer.text}</p>
             <span className="footer-social-title">{t.footer.socials}</span>
@@ -1095,7 +1123,7 @@ export default function Home() {
             <h3>{t.footer.contact}</h3>
             <p>
               <Mail size={15} />
-              hello@solvix.example
+              hello@volnix.example
             </p>
             <p>
               <Phone size={15} />
