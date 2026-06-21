@@ -7,11 +7,11 @@
 
 **Implementation Evidence**
 - Local URL: `http://127.0.0.1:3000`
-- Desktop implementation screenshot: `qa/desktop-implementation.png`
-- Mobile implementation screenshot: `qa/mobile-implementation.png`
+- Desktop implementation screenshot: `qa/polished-desktop.png`
+- Mobile implementation screenshot: `qa/polished-mobile.png`
 - Desktop viewport: `1440 x 820`, captured full page at `1440 x 7578`
-- Mobile viewport: `390 x 844`, captured full page at `390 x 7849`
-- State: default Macedonian language, default project accordion open on item 02, all FAQ items open.
+- Mobile viewport: `390 x 844`, captured full page at `390 x 7881`
+- State: default Macedonian language, default project accordion open on item 02, all FAQ items open. Latest full-page captures were scrolled through once before screenshotting so scroll-revealed sections are visible.
 
 **Full-View Comparison Evidence**
 - Desktop comparison board: `qa/desktop-comparison.jpg`
@@ -20,6 +20,12 @@
 **Focused Region Comparison Evidence**
 - Desktop hero comparison: `qa/desktop-hero-comparison.jpg`
 - Mobile hero comparison: `qa/mobile-hero-comparison.jpg`
+- Latest on-load desktop hero capture: `qa/load-hero-desktop.png`
+- Latest on-load mobile hero capture: `qa/load-hero-mobile.png`
+- Latest GSAP desktop hero capture with installer image: `qa/gsap-hero-desktop.png`
+- Latest GSAP mobile hero capture with installer image: `qa/gsap-hero-mobile.png`
+- Latest clean desktop hero capture without overlay card: `qa/clean-hero-desktop.png`
+- Latest clean mobile hero capture without overlay card: `qa/clean-hero-mobile.png`
 - Focus was required because the hero controls the highest-risk fidelity surfaces: type scale, image crop, CTA shape, stat strip spacing, and mobile breakpoint behavior.
 
 **Required Fidelity Surfaces**
@@ -35,6 +41,12 @@
 - Added a mobile-only clean hero image crop.
 - Adjusted mobile hero text width, gaps, image height, and partner-strip spacing.
 - Added `.next-dev*.log` and `.chrome-qa` to `.gitignore`.
+- Added the body hydration guard for browser-extension-injected attributes.
+- Refined UI transitions: sticky header polish, scroll reveal hooks, menu/accordion easing, CTA hover motion, image depth, and reduced-motion support.
+- Reworked the on-load transition so hero elements enter in a shorter stagger while the image reveals with a soft clip/scale instead of block-level sliding.
+- Replaced CSS/IntersectionObserver entrance motion with GSAP timelines and ScrollTrigger.
+- Replaced the hero wind image with the supplied solar installer photo at `public/images/hero-installer.jpeg`.
+- Removed the video/preview card overlay from the hero image.
 
 **Follow-up Polish**
 - [P3] The source logo/partner marks are generic screenshot marks; the implementation uses live icon/text approximations so language switching and layout stay editable. Replace with original vector/logo assets if exact brand marks become available.

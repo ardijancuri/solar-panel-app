@@ -1,6 +1,13 @@
 "use client";
 
-import { FormEvent, useMemo, useState } from "react";
+import {
+  FormEvent,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useRef,
+  useState
+} from "react";
 import {
   ArrowRight,
   BatteryCharging,
@@ -8,7 +15,6 @@ import {
   CheckCircle2,
   ChevronDown,
   CircleDollarSign,
-  Globe2,
   Home as HomeIcon,
   House,
   Leaf,
@@ -17,7 +23,6 @@ import {
   Menu,
   Phone,
   PlugZap,
-  PlayCircle,
   Sun,
   X,
   Zap
@@ -28,6 +33,8 @@ import {
   FaLinkedinIn,
   FaXTwitter
 } from "react-icons/fa6";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
 
 type Lang = "mk" | "sq" | "en";
 
@@ -51,8 +58,6 @@ const dictionaries = {
       body:
         "Solvix нуди доверливи соларни решенија со високи перформанси за домови, бизниси и позелена иднина.",
       cta: "Бесплатна консултација",
-      video: "Погледнете го решението",
-      videoText: "Чистата технологија носи енергетска независност.",
       stats: [
         { value: "10k+", label: "инсталации" },
         { value: "100k", label: "заштедени kWh" },
@@ -239,8 +244,6 @@ const dictionaries = {
       body:
         "Solvix ofron zgjidhje solare te besueshme dhe me performance te larte per shtepi, biznese dhe nje te ardhme me te gjelber.",
       cta: "Konsultim falas",
-      video: "Shiko zgjidhjen",
-      videoText: "Teknologjia e paster sjell pavaresi energjetike.",
       stats: [
         { value: "10k+", label: "instalime" },
         { value: "100k", label: "kWh te kursyera" },
@@ -422,8 +425,6 @@ const dictionaries = {
       body:
         "Solvix provides reliable, high-performance clean energy solutions for homes, businesses, and a greener future.",
       cta: "Get free consultation",
-      video: "Watch the solution",
-      videoText: "Clean technology creates energy independence.",
       stats: [
         { value: "10k+", label: "installations" },
         { value: "100k", label: "kWh saved" },
@@ -596,19 +597,19 @@ const dictionaries = {
 
 const benefitIcons = [CircleDollarSign, Zap, Leaf, House];
 const solutionIcons = [HomeIcon, Briefcase, BatteryCharging, PlugZap];
-const blogImages = ["/images/blog-plant.jpg", "/images/blog-house.jpg", "/images/blog-panel.jpg"];
 
 export default function Home() {
+  const rootRef = useRef<HTMLElement | null>(null);
   const [lang, setLang] = useState<Lang>("mk");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(1);
-  const [openFaqs, setOpenFaqs] = useState<Set<number>>(
-    () => new Set([0, 1, 2, 3])
-  );
+  const [openFaqs, setOpenFaqs] = useState<number[]>([0, 1, 2, 3]);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
 
   const t = dictionaries[lang];
+  const activeLanguage =
+    languages.find((language) => language.code === lang) ?? languages[0];
 
   const navItems = useMemo(
     () => [
@@ -628,18 +629,168 @@ export default function Home() {
 
   const toggleFaq = (index: number) => {
     setOpenFaqs((current) => {
-      const next = new Set(current);
-      if (next.has(index)) {
-        next.delete(index);
-      } else {
-        next.add(index);
+      if (current.includes(index)) {
+        return current.filter((item) => item !== index);
       }
-      return next;
+
+      return [...current, index];
     });
   };
 
+  const cycleLanguage = () => {
+    const currentIndex = languages.findIndex((language) => language.code === lang);
+    const nextLanguage = languages[(currentIndex + 1) % languages.length];
+    setLang(nextLanguage.code);
+  };
+
+  useLayoutEffect(() => {
+    const root = rootRef.current;
+    if (!root) return;
+
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    const ctx = gsap.context(() => {
+      const revealables = gsap.utils.toArray<HTMLElement>("[data-gsap-reveal]");
+
+      if (prefersReducedMotion) {
+        gsap.set([".site-header", ".gsap-load", ".hero-media", ...revealables], {
+          autoAlpha: 1,
+          clearProps: "all"
+        });
+        return;
+      }
+
+      gsap.set(".site-header", { autoAlpha: 0, y: -8 });
+      gsap.set(".gsap-load", { autoAlpha: 0, y: 18 });
+      gsap.set(".hero-media", {
+        autoAlpha: 0,
+        clipPath: "inset(0 0 0 18%)",
+        scale: 0.985,
+        transformOrigin: "50% 50%"
+      });
+      gsap.set(".hero-media picture > img", { scale: 1.08 });
+      gsap.set(revealables, { autoAlpha: 0, y: 26 });
+
+      const loadTimeline = gsap.timeline({
+        defaults: { ease: "power3.out" }
+      });
+
+      loadTimeline
+        .to(".site-header", {
+          autoAlpha: 1,
+          y: 0,
+          duration: 0.48
+        })
+        .to(
+          ".gsap-load",
+          {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.58,
+            stagger: 0.075
+          },
+          "-=0.14"
+        )
+        .to(
+          ".hero-media",
+          {
+            autoAlpha: 1,
+            clipPath: "inset(0 0 0 0%)",
+            scale: 1,
+            duration: 0.95
+          },
+          "-=0.46"
+        )
+        .to(
+          ".hero-media picture > img",
+          {
+            scale: 1.01,
+            duration: 1.15
+          },
+          "<"
+        )
+        .add(() => ScrollTrigger.refresh(), "-=0.2");
+
+      ScrollTrigger.batch(revealables, {
+        start: "top 86%",
+        once: true,
+        onEnter: (batch) => {
+          gsap.to(batch, {
+            autoAlpha: 1,
+            y: 0,
+            duration: 0.68,
+            stagger: 0.06,
+            ease: "power3.out",
+            overwrite: true
+          });
+        }
+      });
+
+      gsap.delayedCall(0.25, () => ScrollTrigger.refresh());
+    }, root);
+
+    return () => ctx.revert();
+  }, []);
+
+  useEffect(() => {
+    if (!mobileOpen || !rootRef.current) return;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".mobile-panel",
+        { autoAlpha: 0, y: -10, scale: 0.98 },
+        { autoAlpha: 1, y: 0, scale: 1, duration: 0.28, ease: "power3.out" }
+      );
+      gsap.fromTo(
+        ".mobile-panel a, .mobile-panel .mobile-languages",
+        { autoAlpha: 0, x: -8 },
+        {
+          autoAlpha: 1,
+          x: 0,
+          duration: 0.26,
+          stagger: 0.035,
+          ease: "power2.out"
+        }
+      );
+    }, rootRef.current);
+
+    return () => ctx.revert();
+  }, [mobileOpen]);
+
+  useEffect(() => {
+    if (!rootRef.current) return;
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+    if (prefersReducedMotion) return;
+
+    const ctx = gsap.context(() => {
+      gsap.fromTo(
+        ".project-row.active .project-detail",
+        { autoAlpha: 0, y: -10, clipPath: "inset(0 0 8% 0)" },
+        {
+          autoAlpha: 1,
+          y: 0,
+          clipPath: "inset(0 0 0% 0)",
+          duration: 0.42,
+          ease: "power3.out"
+        }
+      );
+    }, rootRef.current);
+
+    return () => ctx.revert();
+  }, [activeProject]);
+
   return (
-    <main id="home" className="site-shell">
+    <main id="home" className="site-shell" ref={rootRef}>
       <header className="site-header">
         <a href="#home" className="brand" aria-label="Solvix">
           <span className="brand-mark">
@@ -657,19 +808,14 @@ export default function Home() {
         </nav>
 
         <div className="header-actions">
-          <div className="language-switcher" aria-label="Language selector">
-            <Globe2 size={14} />
-            {languages.map((language) => (
-              <button
-                key={language.code}
-                type="button"
-                className={language.code === lang ? "active" : ""}
-                onClick={() => setLang(language.code)}
-              >
-                {language.label}
-              </button>
-            ))}
-          </div>
+          <button
+            type="button"
+            className="language-circle"
+            aria-label={`Language: ${activeLanguage.label}`}
+            onClick={cycleLanguage}
+          >
+            {activeLanguage.label}
+          </button>
           <a className="contact-button" href="#contact">
             {t.nav.contact}
           </a>
@@ -713,18 +859,18 @@ export default function Home() {
       ) : null}
 
       <section className="hero section-pad">
-        <div className="hero-copy reveal-up">
-          <p className="eyebrow">{t.hero.eyebrow}</p>
-          <h1>{t.hero.title}</h1>
-          <p className="hero-body">{t.hero.body}</p>
-          <a href="#contact" className="primary-cta">
+        <div className="hero-copy">
+          <p className="eyebrow gsap-load">{t.hero.eyebrow}</p>
+          <h1 className="gsap-load">{t.hero.title}</h1>
+          <p className="hero-body gsap-load">{t.hero.body}</p>
+          <a href="#contact" className="primary-cta gsap-load">
             {t.hero.cta}
             <span>
               <ArrowRight size={15} />
             </span>
           </a>
 
-          <div className="stats-strip">
+          <div className="stats-strip gsap-load">
             {t.hero.stats.map((stat) => (
               <div key={stat.label}>
                 <strong>{stat.value}</strong>
@@ -734,23 +880,15 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="hero-media reveal-up delay-one">
+        <div className="hero-media">
           <picture>
-            <source media="(max-width: 980px)" srcSet="/images/hero-wind-mobile.jpg" />
-            <img src="/images/hero-wind.jpg" alt="" />
+            <source media="(max-width: 980px)" srcSet="/images/hero-installer.jpeg" />
+            <img src="/images/hero-installer.jpeg" alt="" />
           </picture>
-          <div className="video-card">
-            <div className="video-thumb">
-              <img src="/images/video-thumb.jpg" alt="" />
-              <PlayCircle size={36} />
-            </div>
-            <strong>{t.hero.video}</strong>
-            <span>{t.hero.videoText}</span>
-          </div>
         </div>
       </section>
 
-      <section className="partner-strip" aria-label="Partner logos">
+      <section className="partner-strip" aria-label="Partner logos" data-gsap-reveal>
         {t.partners.map((partner, index) => (
           <div className="partner-logo" key={`${partner}-${index}`}>
             <Leaf size={21} />
@@ -759,7 +897,7 @@ export default function Home() {
         ))}
       </section>
 
-      <section id="about" className="benefits-section">
+      <section id="about" className="benefits-section" data-gsap-reveal>
         <div className="benefits-grid">
           <div className="benefit-intro">
             <p className="section-kicker">{t.benefits.eyebrow}</p>
@@ -790,7 +928,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="solutions-section section-pad">
+      <section className="solutions-section section-pad" data-gsap-reveal>
         <div className="section-heading centered">
           <p className="section-kicker">{t.solutions.eyebrow}</p>
           <h2>{t.solutions.title}</h2>
@@ -800,7 +938,7 @@ export default function Home() {
           {t.solutions.items.map((item, index) => {
             const Icon = solutionIcons[index];
             return (
-              <article className="solution-card" key={item.title}>
+              <article className="solution-card" key={item.title} data-gsap-reveal>
                 <Icon size={32} />
                 <h3>{item.title}</h3>
                 <p>{item.body}</p>
@@ -810,12 +948,16 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="projects" className="projects-section">
+      <section id="projects" className="projects-section" data-gsap-reveal>
         <div className="project-list">
           {t.projects.map((project, index) => {
             const isActive = index === activeProject;
             return (
-              <article className={`project-row ${isActive ? "active" : ""}`} key={project.title}>
+              <article
+                className={`project-row ${isActive ? "active" : ""}`}
+                key={project.title}
+                data-gsap-reveal
+              >
                 <button
                   type="button"
                   className="project-trigger"
@@ -847,52 +989,25 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="success-section section-pad">
-        <div className="section-heading centered">
-          <p className="section-kicker">{t.success.eyebrow}</p>
-          <h2>{t.success.title}</h2>
-        </div>
-
-        <div className="success-card">
-          <img src="/images/customer.jpg" alt="John Darrell" />
-          <article>
-            <h3>{t.success.quoteTitle}</h3>
-            <p>{t.success.quote}</p>
-            <div className="success-footer">
-              <strong>{t.success.author}</strong>
-              <span>- {t.success.location}</span>
-              <div className="success-controls">
-                <button type="button" aria-label="Previous story">
-                  <ArrowRight size={16} />
-                </button>
-                <button type="button" aria-label="Next story">
-                  <ArrowRight size={16} />
-                </button>
-              </div>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <section className="steps-section">
+      <section className="steps-section" data-gsap-reveal>
         <div className="steps-copy">
           <p className="section-kicker">{t.steps.eyebrow}</p>
           <h2>{t.steps.title}</h2>
-          <div className="steps-line">
-            {t.steps.items.map((item) => (
-              <article key={item.title}>
-                <h3>{item.title}</h3>
-                <p>{item.body}</p>
-              </article>
-            ))}
-          </div>
+        </div>
+        <div className="steps-line">
+          {t.steps.items.map((item) => (
+            <article key={item.title}>
+              <h3>{item.title}</h3>
+              <p>{item.body}</p>
+            </article>
+          ))}
         </div>
         <div className="steps-collage">
           <img src="/images/steps-collage.jpg" alt="" />
         </div>
       </section>
 
-      <section className="faq-section section-pad">
+      <section className="faq-section section-pad" data-gsap-reveal>
         <div className="section-heading centered">
           <p className="section-kicker">{t.faq.eyebrow}</p>
           <h2>{t.faq.title}</h2>
@@ -900,42 +1015,35 @@ export default function Home() {
 
         <div className="faq-grid">
           {t.faq.items.map((item, index) => {
-            const open = openFaqs.has(index);
+            const open = openFaqs.includes(index);
+            const answerId = `faq-answer-${index}`;
             return (
-              <article className="faq-item" key={item.q}>
+              <article className="faq-item" key={item.q} data-gsap-reveal>
                 <button
                   type="button"
                   onClick={() => toggleFaq(index)}
                   aria-expanded={open}
+                  aria-controls={answerId}
                 >
                   <span>{item.q}</span>
                   <ChevronDown size={16} className={open ? "rotated" : ""} />
                 </button>
-                {open ? <p>{item.a}</p> : null}
+                <div
+                  id={answerId}
+                  className={`faq-answer ${open ? "open" : ""}`}
+                  aria-hidden={!open}
+                >
+                  <div className="faq-answer-inner">
+                    <p>{item.a}</p>
+                  </div>
+                </div>
               </article>
             );
           })}
         </div>
       </section>
 
-      <section className="blog-section section-pad">
-        <div className="section-heading centered blog-heading">
-          <p className="section-kicker">{t.blog.eyebrow}</p>
-          <h2>{t.blog.title}</h2>
-        </div>
-
-        <div className="blog-grid">
-          {t.blog.posts.map((post, index) => (
-            <article className="blog-card" key={post.title}>
-              <img src={blogImages[index]} alt="" />
-              <p>{post.meta}</p>
-              <h3>{post.title}</h3>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="contact" className="quote-section">
+      <section id="contact" className="quote-section" data-gsap-reveal>
         <p className="eyebrow">{t.cta.eyebrow}</p>
         <h2>{t.cta.title}</h2>
         <p>{t.cta.body}</p>
@@ -947,7 +1055,7 @@ export default function Home() {
         </a>
       </section>
 
-      <footer className="footer">
+      <footer className="footer" data-gsap-reveal>
         <div className="footer-grid">
           <div className="footer-brand">
             <a href="#home" className="brand light" aria-label="Solvix">
