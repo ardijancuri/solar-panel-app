@@ -2,16 +2,27 @@
 @import "tailwindcss";
 
 :root {
-  --green-950: #173d2b;
-  --green-900: #1d432f;
-  --green-800: #254f37;
-  --green-600: #76a82e;
-  --green-500: #8fc63d;
-  --green-100: #f2fadf;
-  --green-50: #f8fde9;
-  --ink: #273629;
-  --muted: #7d887e;
-  --line: #e7ece1;
+  --brand-navy: #003054;
+  --brand-deep-blue: #003c6c;
+  --brand-blue: #0054a8;
+  --brand-sky: #0084c0;
+  --brand-green: #3c9018;
+  --brand-lime: #6cb40c;
+  --brand-solar: #6cb40c;
+  --brand-orange: #3c9018;
+  --brand-ice: #f2f9ff;
+  --brand-sunwash: #f1f9e8;
+  --green-950: var(--brand-navy);
+  --green-900: var(--brand-deep-blue);
+  --green-800: var(--brand-blue);
+  --green-700: var(--brand-sky);
+  --green-600: var(--brand-green);
+  --green-500: var(--brand-lime);
+  --green-100: #e6f6ff;
+  --green-50: var(--brand-ice);
+  --ink: #082c43;
+  --muted: #657684;
+  --line: #dbeaf2;
   --surface: #ffffff;
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -38,7 +49,7 @@ body {
 
 ::selection {
   color: var(--green-950);
-  background: #d9ff75;
+  background: #c8ef7a;
 }
 
 a {
@@ -66,7 +77,7 @@ img {
 }
 
 :focus-visible {
-  outline: 3px solid rgba(143, 198, 61, 0.42);
+  outline: 3px solid rgba(0, 132, 192, 0.36);
   outline-offset: 4px;
 }
 
@@ -142,7 +153,7 @@ img {
 
 .brand:hover {
   transform: translateY(-1px);
-  color: #2f5f1f;
+  color: var(--brand-blue);
 }
 
 .brand-logo {
@@ -157,7 +168,7 @@ img {
   display: flex;
   align-items: center;
   gap: 58px;
-  color: #4a564c;
+  color: #38556b;
   font-size: 16px;
   font-weight: 700;
 }
@@ -190,9 +201,9 @@ img {
   padding: 4px 4px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  color: #657063;
+  color: #526b80;
   background: #fff;
-  box-shadow: 0 8px 24px rgba(23, 61, 43, 0.04);
+  box-shadow: 0 8px 24px rgba(0, 48, 84, 0.04);
 }
 
 .language-circle {
@@ -235,7 +246,7 @@ img {
   border: 0;
   border-radius: 999px;
   background: transparent;
-  color: #66715f;
+  color: #536b80;
   font-size: 11px;
   font-weight: 800;
   transition: background-color 180ms ease, color 180ms ease, transform 180ms ease;
@@ -257,7 +268,7 @@ img {
   align-items: center;
   justify-content: center;
   padding: 0 18px;
-  border: 1px solid #dfe6db;
+  border: 1px solid #d7e7f0;
   border-radius: 999px;
   color: var(--ink);
   font-size: 13px;
@@ -305,7 +316,7 @@ img {
   border: 1px solid var(--line);
   border-radius: 18px;
   background: #fff;
-  box-shadow: 0 24px 60px rgba(29, 67, 47, 0.14);
+  box-shadow: 0 24px 60px rgba(0, 48, 84, 0.12);
 }
 
 .mobile-panel a {
@@ -347,7 +358,7 @@ img {
 .hero h1 {
   max-width: 660px;
   margin: 0;
-  color: #2f5f1f;
+  color: var(--green-950);
   font-size: clamp(42px, 3.8vw, 64px);
   font-weight: 800;
   line-height: 0.96;
@@ -357,7 +368,7 @@ img {
 .hero-body {
   max-width: 650px;
   margin: 26px 0 28px;
-  color: #778174;
+  color: var(--muted);
   font-size: 18px;
   line-height: 1.7;
 }
@@ -373,7 +384,7 @@ img {
   color: #fff;
   font-size: 13px;
   font-weight: 800;
-  box-shadow: 0 10px 24px rgba(23, 61, 43, 0.16);
+  box-shadow: 0 10px 24px rgba(0, 48, 84, 0.16);
   transition:
     transform 220ms var(--ease-out),
     box-shadow 220ms var(--ease-out),
@@ -381,9 +392,9 @@ img {
 }
 
 .primary-cta:hover {
-  background: #102d1f;
+  background: var(--brand-blue);
   transform: translateY(-2px);
-  box-shadow: 0 16px 32px rgba(23, 61, 43, 0.2);
+  box-shadow: 0 16px 32px rgba(0, 84, 168, 0.2);
 }
 
 .primary-cta span {
@@ -398,7 +409,7 @@ img {
 }
 
 .primary-cta:hover span {
-  background: #ecffd0;
+  background: var(--brand-sunwash);
   transform: translateX(2px) rotate(-20deg);
 }
 
@@ -408,8 +419,9 @@ img {
   gap: 0;
   max-width: 625px;
   margin-top: 52px;
-  background: linear-gradient(90deg, #f5fde3 0%, #fbfff2 100%);
-  border: 1px solid rgba(230, 239, 207, 0.78);
+  background: #eef8ff;
+  background-image: none;
+  border: 1px solid rgba(0, 132, 192, 0.14);
   border-radius: 6px;
   box-shadow: none;
   overflow: hidden;
@@ -417,7 +429,8 @@ img {
 
 .stats-strip div {
   padding: 28px 30px 24px;
-  border-right: 1px solid #e5efcf;
+  background: #eef8ff;
+  border-right: 1px solid #dcebf3;
 }
 
 .stats-strip div:last-child {
@@ -435,7 +448,7 @@ img {
 .stats-strip span {
   display: block;
   margin-top: 9px;
-  color: #7b866f;
+  color: var(--muted);
   font-size: 12px;
   font-weight: 700;
 }
@@ -477,7 +490,7 @@ img {
   gap: 34px;
   margin: 0 auto;
   padding: 8px 0 92px;
-  color: #b9bdb8;
+  color: #b6c2cc;
 }
 
 .partner-logo {
@@ -492,7 +505,7 @@ img {
 }
 
 .partner-logo:hover {
-  color: var(--green-700, #658f2b);
+  color: var(--brand-sky);
   opacity: 1;
   transform: translateY(-2px);
 }
@@ -576,13 +589,13 @@ img {
   place-items: center;
   border-radius: 50%;
   color: var(--green-950);
-  background: #d7ff70;
+  background: var(--brand-solar);
   transition: transform 220ms var(--ease-out), box-shadow 220ms ease;
 }
 
 .benefit-item:hover > span {
   transform: rotate(-8deg) scale(1.05);
-  box-shadow: 0 14px 30px rgba(217, 255, 117, 0.18);
+  box-shadow: 0 14px 30px rgba(108, 180, 12, 0.22);
 }
 
 .benefit-item h3,
@@ -618,7 +631,7 @@ img {
 .section-heading h2,
 .faq-section h2 {
   margin: 0;
-  color: #2d362f;
+  color: var(--ink);
   font-size: clamp(36px, 3.2vw, 52px);
   font-weight: 800;
   line-height: 1.12;
@@ -637,12 +650,12 @@ img {
 }
 
 .solution-card {
-  color: #7b887a;
+  color: var(--muted);
   transition: color 220ms ease, transform 220ms var(--ease-out);
 }
 
 .solution-card:hover {
-  color: #596656;
+  color: #3d5568;
   transform: translateY(-6px);
 }
 
@@ -697,13 +710,13 @@ img {
 }
 
 .project-trigger:hover {
-  background: #fbfdf4;
+  background: var(--brand-ice);
   padding-right: 12px;
   padding-left: 12px;
 }
 
 .project-number {
-  color: #343d35;
+  color: var(--ink);
   font-size: 19px;
   font-weight: 800;
 }
@@ -715,14 +728,14 @@ img {
 
 .project-location {
   justify-self: end;
-  color: #899185;
+  color: #7b8b98;
   font-size: 15px;
   font-weight: 700;
 }
 
 .project-trigger svg {
   justify-self: end;
-  color: #a0aaa0;
+  color: #9caeb9;
   transition: transform 180ms ease;
 }
 
@@ -771,7 +784,7 @@ img {
   border-radius: 999px;
   padding: 0 20px;
   color: var(--green-800);
-  background: #f1ffcf;
+  background: var(--brand-sunwash);
   font-size: 13px;
   font-weight: 800;
   backdrop-filter: blur(10px);
@@ -879,7 +892,7 @@ img {
 }
 
 .steps-line h3 {
-  color: #d9ff75;
+  color: var(--brand-solar);
   font-size: 16px;
   line-height: 1.2;
   white-space: nowrap;
@@ -978,7 +991,7 @@ img {
 .faq-answer p {
   max-width: 540px;
   margin: 17px 0 0;
-  color: #7a8479;
+  color: var(--muted);
   font-size: 13px;
   line-height: 1.65;
 }
@@ -1000,15 +1013,15 @@ img {
   z-index: -1;
   content: "";
   background:
-    radial-gradient(circle at 30% 20%, rgba(143, 198, 61, 0.11), transparent 32%),
-    radial-gradient(circle at 75% 72%, rgba(23, 61, 43, 0.08), transparent 34%);
+    radial-gradient(circle at 30% 20%, rgba(0, 132, 192, 0.12), transparent 32%),
+    radial-gradient(circle at 75% 72%, rgba(108, 180, 12, 0.14), transparent 34%);
   opacity: 0.8;
 }
 
 .quote-section h2 {
   max-width: 980px;
   margin: 0;
-  color: var(--green-500);
+  color: var(--green-950);
   font-size: clamp(44px, 5vw, 78px);
   font-weight: 800;
   line-height: 1.02;
@@ -1018,7 +1031,7 @@ img {
 .quote-section > p:not(.eyebrow) {
   max-width: 660px;
   margin: 22px 0 28px;
-  color: #788476;
+  color: var(--muted);
   font-size: 16px;
   line-height: 1.65;
 }
@@ -1079,13 +1092,13 @@ img {
   place-items: center;
   border-radius: 50%;
   color: var(--green-950);
-  background: #e9ffbb;
+  background: var(--brand-sunwash);
   font-size: 13px;
   transition: transform 180ms var(--ease-out), background-color 180ms ease;
 }
 
 .social-row a:hover {
-  background: #d7ff70;
+  background: var(--brand-solar);
   transform: translateY(-3px);
 }
 
@@ -1170,7 +1183,7 @@ img {
 }
 
 .footer-subscribe button:hover {
-  background: var(--green-900);
+  background: var(--brand-blue);
   transform: translateY(-1px);
 }
 
@@ -1504,7 +1517,7 @@ img {
   .project-overlay p {
     max-width: none;
     margin-top: 15px;
-    color: #778174;
+    color: var(--muted);
     font-size: 10px;
     text-align: left;
     text-shadow: none;
