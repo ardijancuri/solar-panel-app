@@ -46,6 +46,20 @@ const languages: { code: Lang; label: string }[] = [
 
 const whatsappHref = "https://wa.me/38970123456";
 
+const partnerLogos = [
+  { name: "LONGi", src: "/images/partner-longi.png" },
+  { name: "Growatt", src: "/images/partner-growatt.png" },
+  { name: "Deye", src: "/images/partner-deye.png" },
+  { name: "SAKO", src: "/images/partner-sako.png" }
+];
+
+const heroSlides = [
+  { label: "Solar panel installation team", src: "/images/hero-slide-roof-team.jpg" },
+  { label: "Rooftop solar installation at sunset", src: "/images/hero-slide-sunset-install.jpg" },
+  { label: "Solar panel technician inspection", src: "/images/hero-slide-panel-work.jpg" },
+  { label: "Rooftop installer with solar panels", src: "/images/hero-rooftop-installer.png" }
+];
+
 const dictionaries = {
   mk: {
     nav: {
@@ -607,6 +621,7 @@ export default function Home() {
   const [lang, setLang] = useState<Lang>("mk");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(1);
+  const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const [openFaqs, setOpenFaqs] = useState<number[]>([0, 1, 2, 3]);
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
@@ -650,6 +665,20 @@ export default function Home() {
     setLang(nextLanguage.code);
   };
 
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
+
+    if (prefersReducedMotion || heroSlides.length < 2) return;
+
+    const interval = window.setInterval(() => {
+      setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
+    }, 5200);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
   useLayoutEffect(() => {
     const root = rootRef.current;
     if (!root) return;
@@ -678,7 +707,7 @@ export default function Home() {
             ".site-header",
             ".gsap-load",
             ".hero-media",
-            ".hero-media picture > img",
+            ".hero-slide img",
             ...revealables
           ],
           {
@@ -909,24 +938,47 @@ export default function Home() {
         </div>
 
         <div className="hero-media" style={initialHeroMediaStyle}>
-          <picture>
-            <source media="(max-width: 980px)" srcSet="/images/hero-installer.jpeg" />
-            <img
-              src="/images/hero-installer.jpeg"
-              alt=""
-              loading="eager"
-              fetchPriority="high"
-              decoding="async"
-            />
-          </picture>
+          <div className="hero-slider" aria-label="Solar installation image slider">
+            {heroSlides.map((slide, index) => (
+              <div
+                className={`hero-slide${index === activeHeroSlide ? " active" : ""}`}
+                key={slide.src}
+                aria-hidden={index !== activeHeroSlide}
+              >
+                <img
+                  src={slide.src}
+                  alt=""
+                  loading={index === 0 ? "eager" : "lazy"}
+                  fetchPriority={index === 0 ? "high" : "auto"}
+                  decoding="async"
+                />
+              </div>
+            ))}
+            <div className="hero-slider-dots" aria-label="Hero image selector">
+              {heroSlides.map((slide, index) => (
+                <button
+                  key={slide.src}
+                  type="button"
+                  className={index === activeHeroSlide ? "active" : ""}
+                  aria-label={`Show ${slide.label}`}
+                  aria-current={index === activeHeroSlide ? "true" : undefined}
+                  onClick={() => setActiveHeroSlide(index)}
+                />
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       <section className="partner-strip" aria-label="Partner logos" data-gsap-reveal>
-        {t.partners.map((partner, index) => (
-          <div className="partner-logo" key={`${partner}-${index}`}>
-            <Leaf size={21} />
-            <span>{partner}</span>
+        {partnerLogos.map((partner) => (
+          <div className="partner-logo" key={partner.name}>
+            <img
+              src={partner.src}
+              alt={`${partner.name} logo`}
+              loading="lazy"
+              decoding="async"
+            />
           </div>
         ))}
       </section>
