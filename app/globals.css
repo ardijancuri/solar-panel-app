@@ -466,6 +466,8 @@ img {
   position: relative;
   width: 100%;
   height: 655px;
+  touch-action: pan-y;
+  user-select: none;
 }
 
 .hero-slide {
@@ -619,6 +621,7 @@ img {
   width: 100%;
   height: 520px;
   object-fit: cover;
+  object-position: 18% center;
   transition: transform 700ms var(--ease-out);
 }
 
@@ -1554,6 +1557,7 @@ img {
 
   .benefit-photo img {
     height: 246px;
+    object-position: center;
   }
 
   .benefit-list {

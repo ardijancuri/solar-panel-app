@@ -2,7 +2,8 @@
 
 import {
   type CSSProperties,
-  FormEvent,
+  type FormEvent,
+  type TouchEvent,
   useEffect,
   useLayoutEffect,
   useMemo,
@@ -618,6 +619,7 @@ export default function Home() {
   const rootRef = useRef<HTMLElement | null>(null);
   const motionPrepRef = useRef(true);
   const didMountProjectRef = useRef(false);
+  const heroTouchStartRef = useRef<{ x: number; y: number } | null>(null);
   const [lang, setLang] = useState<Lang>("mk");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(1);
@@ -663,6 +665,34 @@ export default function Home() {
     const currentIndex = languages.findIndex((language) => language.code === lang);
     const nextLanguage = languages[(currentIndex + 1) % languages.length];
     setLang(nextLanguage.code);
+  };
+
+  const showHeroSlide = (direction: number) => {
+    setActiveHeroSlide(
+      (current) => (current + direction + heroSlides.length) % heroSlides.length
+    );
+  };
+
+  const onHeroTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    const touch = event.touches[0];
+    if (!touch) return;
+    heroTouchStartRef.current = { x: touch.clientX, y: touch.clientY };
+  };
+
+  const onHeroTouchEnd = (event: TouchEvent<HTMLDivElement>) => {
+    const start = heroTouchStartRef.current;
+    const touch = event.changedTouches[0];
+    heroTouchStartRef.current = null;
+
+    if (!start || !touch) return;
+
+    const deltaX = touch.clientX - start.x;
+    const deltaY = touch.clientY - start.y;
+    const horizontalMove = Math.abs(deltaX);
+
+    if (horizontalMove < 40 || horizontalMove < Math.abs(deltaY) * 1.2) return;
+
+    showHeroSlide(deltaX < 0 ? 1 : -1);
   };
 
   useEffect(() => {
@@ -938,7 +968,15 @@ export default function Home() {
         </div>
 
         <div className="hero-media" style={initialHeroMediaStyle}>
-          <div className="hero-slider" aria-label="Solar installation image slider">
+          <div
+            className="hero-slider"
+            aria-label="Solar installation image slider"
+            onTouchStart={onHeroTouchStart}
+            onTouchEnd={onHeroTouchEnd}
+            onTouchCancel={() => {
+              heroTouchStartRef.current = null;
+            }}
+          >
             {heroSlides.map((slide, index) => (
               <div
                 className={`hero-slide${index === activeHeroSlide ? " active" : ""}`}
@@ -992,7 +1030,7 @@ export default function Home() {
           </div>
 
           <div className="benefit-photo">
-            <img src="/images/benefit-solar.jpg" alt="" />
+            <img src="/images/benefit-renewable-field.jpg" alt="" />
           </div>
 
           <div className="benefit-list">
