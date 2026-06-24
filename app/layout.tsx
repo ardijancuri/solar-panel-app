@@ -16,7 +16,12 @@ const mobileScrollResetScript = `
 export const metadata: Metadata = {
   title: "Volnix - Соларна енергија",
   description:
-    "Volnix нуди модерни соларни решенија за домови, бизниси и заедници."
+    "Volnix нуди модерни соларни решенија за домови, бизниси и заедници.",
+  icons: {
+    icon: [{ url: "/images/volnix-logo.png", type: "image/png" }],
+    shortcut: [{ url: "/images/volnix-logo.png", type: "image/png" }],
+    apple: [{ url: "/images/volnix-logo.png", type: "image/png" }]
+  }
 };
 
 export default function RootLayout({
