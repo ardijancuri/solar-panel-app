@@ -55,9 +55,9 @@ const partnerLogos = [
 ];
 
 const heroSlides = [
+  { label: "Solar panel technician inspection", src: "/images/hero-slide-panel-work.jpg" },
   { label: "Solar panel installation team", src: "/images/hero-slide-roof-team.jpg" },
   { label: "Rooftop solar installation at sunset", src: "/images/hero-slide-sunset-install.jpg" },
-  { label: "Solar panel technician inspection", src: "/images/hero-slide-panel-work.jpg" },
   { label: "Rooftop installer with solar panels", src: "/images/hero-rooftop-installer.png" }
 ];
 
@@ -620,6 +620,7 @@ export default function Home() {
   const motionPrepRef = useRef(true);
   const didMountProjectRef = useRef(false);
   const heroTouchStartRef = useRef<{ x: number; y: number } | null>(null);
+  const heroAutoplayIntervalRef = useRef<number | null>(null);
   const [lang, setLang] = useState<Lang>("mk");
   const [mobileOpen, setMobileOpen] = useState(false);
   const [activeProject, setActiveProject] = useState(1);
@@ -667,6 +668,12 @@ export default function Home() {
     setLang(nextLanguage.code);
   };
 
+  const stopHeroAutoplay = () => {
+    if (heroAutoplayIntervalRef.current === null) return;
+    window.clearInterval(heroAutoplayIntervalRef.current);
+    heroAutoplayIntervalRef.current = null;
+  };
+
   const showHeroSlide = (direction: number) => {
     setActiveHeroSlide(
       (current) => (current + direction + heroSlides.length) % heroSlides.length
@@ -692,6 +699,7 @@ export default function Home() {
 
     if (horizontalMove < 40 || horizontalMove < Math.abs(deltaY) * 1.2) return;
 
+    stopHeroAutoplay();
     showHeroSlide(deltaX < 0 ? 1 : -1);
   };
 
@@ -702,11 +710,15 @@ export default function Home() {
 
     if (prefersReducedMotion || heroSlides.length < 2) return;
 
-    const interval = window.setInterval(() => {
+    heroAutoplayIntervalRef.current = window.setInterval(() => {
       setActiveHeroSlide((current) => (current + 1) % heroSlides.length);
     }, 5200);
 
-    return () => window.clearInterval(interval);
+    return () => {
+      if (heroAutoplayIntervalRef.current === null) return;
+      window.clearInterval(heroAutoplayIntervalRef.current);
+      heroAutoplayIntervalRef.current = null;
+    };
   }, []);
 
   useLayoutEffect(() => {
@@ -1000,7 +1012,10 @@ export default function Home() {
                   className={index === activeHeroSlide ? "active" : ""}
                   aria-label={`Show ${slide.label}`}
                   aria-current={index === activeHeroSlide ? "true" : undefined}
-                  onClick={() => setActiveHeroSlide(index)}
+                  onClick={() => {
+                    stopHeroAutoplay();
+                    setActiveHeroSlide(index);
+                  }}
                 />
               ))}
             </div>
