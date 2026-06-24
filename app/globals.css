@@ -1837,6 +1837,17 @@ img {
     grid-template-columns: 1fr;
     gap: 28px;
     padding: 48px 0 36px;
+    text-align: left;
+    justify-items: start;
+  }
+
+  .footer-brand,
+  .footer-links,
+  .footer-contact,
+  .footer-subscribe {
+    width: 100%;
+    text-align: left;
+    justify-items: start;
   }
 
   .footer-brand p,
@@ -1856,6 +1867,26 @@ img {
   .footer-contact,
   .footer-subscribe {
     padding-top: 0;
+  }
+
+  .footer-brand p,
+  .footer-subscribe p {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
+  .footer-social-title,
+  .footer h3 {
+    text-align: left;
+  }
+
+  .social-row {
+    justify-content: flex-start;
+  }
+
+  .footer-contact a,
+  .footer-contact p {
+    justify-content: flex-start;
   }
 
   .footer-subscribe form {
