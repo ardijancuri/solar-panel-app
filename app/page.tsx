@@ -30,9 +30,7 @@ import {
 } from "lucide-react";
 import {
   FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaXTwitter
+  FaInstagram
 } from "react-icons/fa6";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -45,7 +43,12 @@ const languages: { code: Lang; label: string }[] = [
   { code: "en", label: "EN" }
 ];
 
+const contactEmail = "volnixmacedonia@gmail.com";
 const whatsappHref = "https://wa.me/38970465349";
+const whatsappPhoneHref = "tel:+38970465349";
+const facebookHref = "https://www.facebook.com/share/1ZG8ryttkt/?mibextid=wwXIfr";
+const instagramHref = "https://www.instagram.com/volnixmk?igsh=N2xqNHYwNXg3dWNp";
+const whatsappPhoneLabel = "+389 70 465 349";
 
 const partnerLogos = [
   { name: "LONGi", src: "/images/partner-longi.png" },
@@ -59,6 +62,13 @@ const heroSlides = [
   { label: "Solar panel installation team", src: "/images/hero-slide-roof-team.jpg" },
   { label: "Rooftop solar installation at sunset", src: "/images/hero-slide-sunset-install.jpg" },
   { label: "Rooftop installer with solar panels", src: "/images/hero-rooftop-installer.png" }
+];
+
+const projectImages = [
+  "/images/solution-rooftop-example.jpg",
+  "/images/project-roof-compact.jpg",
+  "/images/project-roof-large-array.jpg",
+  "/images/project-roof-home-array.jpg"
 ];
 
 const dictionaries = {
@@ -134,25 +144,25 @@ const dictionaries = {
     },
     projects: [
       {
-        title: "Одржливо живеење за заедница",
-        location: "Green Haven Residences - Лос Анџелес, CA"
+        title: "Кровна соларна инсталација",
+        location: "Тетово"
       },
       {
-        title: "Соларно напојуван ритејл",
-        location: "RetailMart Superstore - Хјустон, TX"
+        title: "Компактна кровна соларна инсталација",
+        location: "Гостивар"
       },
       {
-        title: "Off-grid соларна фарма",
-        location: "Harmony Eco Lodge - Лос Анџелес, CA"
+        title: "Домашен кровен соларен систем",
+        location: "Кичево"
       },
       {
-        title: "Паметна соларна урбана инфраструктура",
-        location: "City Transit Hub - Лос Анџелес, CA"
+        title: "Соларна инсталација за семеен дом",
+        location: "Штип"
       }
     ],
     projectTags: ["Резиденцијален солар", "Соларна енергија", "Заштеда"],
     projectText:
-      "Систем за обновлива енергија поставен околу зелена архитектура, со чисто производство и долгорочна вредност за заедницата.",
+      "Кровен соларен систем дизајниран за секојдневна домашна потрошувачка, чисто производство и долгорочна заштеда.",
     success: {
       eyebrow: "/ приказни",
       title: "Успешни приказни",
@@ -316,25 +326,25 @@ const dictionaries = {
     },
     projects: [
       {
-        title: "Jetese e qendrueshme per komunitetin",
-        location: "Green Haven Residences - Los Angeles, CA"
+        title: "Instalim solar ne cati",
+        location: "Tetovo"
       },
       {
-        title: "Dyqan i fuqizuar nga dielli",
-        location: "RetailMart Superstore - Houston, TX"
+        title: "Instalim kompakt solar ne cati",
+        location: "Gostivar"
       },
       {
-        title: "Ferme solare off-grid",
-        location: "Harmony Eco Lodge - Los Angeles, CA"
+        title: "Sistem solar shtepiak ne cati",
+        location: "Kerqove"
       },
       {
-        title: "Infrastrukture urbane solare",
-        location: "City Transit Hub - Los Angeles, CA"
+        title: "Instalim solar per shtepi familjare",
+        location: "Shtip"
       }
     ],
     projectTags: ["Solar rezidencial", "Energji solare", "Kursime"],
     projectText:
-      "Sistem energjie i vendosur rreth arkitektures se gjelber, me prodhim te paster dhe vlere afatgjate.",
+      "Sistem solar ne cati i pershtatur per konsumin ditor te shtepise, prodhim te paster dhe kursim afatgjate.",
     success: {
       eyebrow: "/ histori",
       title: "Histori suksesi",
@@ -497,25 +507,25 @@ const dictionaries = {
     },
     projects: [
       {
-        title: "Sustainable living for a community",
-        location: "Green Haven Residences - Los Angeles, CA"
+        title: "Rooftop solar installation",
+        location: "Tetovo"
       },
       {
-        title: "Solar-powered retail",
-        location: "RetailMart Superstore - Houston, TX"
+        title: "Compact rooftop solar installation",
+        location: "Gostivar"
       },
       {
-        title: "Off-grid solar farm",
-        location: "Harmony Eco Lodge - Los Angeles, CA"
+        title: "Home rooftop solar system",
+        location: "Kerqove"
       },
       {
-        title: "Smart solar for urban infrastructure",
-        location: "City Transit Hub - Los Angeles, CA"
+        title: "Family home solar installation",
+        location: "Shtip"
       }
     ],
     projectTags: ["Residential solar", "Solar energy", "Energy savings"],
     projectText:
-      "A clean energy system wrapped into green architecture, producing measurable savings and long-term community value.",
+      "A rooftop solar system designed for everyday home consumption, clean production, and long-term energy savings.",
     success: {
       eyebrow: "/ success stories",
       title: "Success stories",
@@ -623,7 +633,7 @@ export default function Home() {
   const heroAutoplayIntervalRef = useRef<number | null>(null);
   const [lang, setLang] = useState<Lang>("mk");
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [activeProject, setActiveProject] = useState(1);
+  const [activeProject, setActiveProject] = useState(0);
   const [activeHeroSlide, setActiveHeroSlide] = useState(0);
   const [openFaqs, setOpenFaqs] = useState<number[]>([0, 1, 2, 3]);
   const [email, setEmail] = useState("");
@@ -1110,7 +1120,7 @@ export default function Home() {
 
                 {isActive ? (
                   <div className="project-detail">
-                    <img src="/images/project-retail.jpg" alt="" />
+                    <img src={projectImages[index]} alt="" />
                     <div className="project-overlay">
                       <div className="tag-row">
                         {t.projectTags.map((tag) => (
@@ -1141,7 +1151,7 @@ export default function Home() {
           ))}
         </div>
         <div className="steps-collage">
-          <img src="/images/steps-collage.jpg" alt="" />
+          <img src="/images/process-solar-field.jpg" alt="" />
         </div>
       </section>
 
@@ -1185,7 +1195,7 @@ export default function Home() {
         <p className="eyebrow">{t.cta.eyebrow}</p>
         <h2>{t.cta.title}</h2>
         <p>{t.cta.body}</p>
-        <a href="mailto:hello@volnix.example" className="primary-cta">
+        <a href={`mailto:${contactEmail}`} className="primary-cta">
           {t.cta.button}
           <span>
             <ArrowRight size={15} />
@@ -1202,17 +1212,11 @@ export default function Home() {
             <p>{t.footer.text}</p>
             <span className="footer-social-title">{t.footer.socials}</span>
             <div className="social-row">
-              <a href="#" aria-label="Facebook">
+              <a href={facebookHref} aria-label="Facebook" target="_blank" rel="noreferrer">
                 <FaFacebookF />
               </a>
-              <a href="#" aria-label="Instagram">
+              <a href={instagramHref} aria-label="Instagram" target="_blank" rel="noreferrer">
                 <FaInstagram />
-              </a>
-              <a href="#" aria-label="X">
-                <FaXTwitter />
-              </a>
-              <a href="#" aria-label="LinkedIn">
-                <FaLinkedinIn />
               </a>
             </div>
           </div>
@@ -1228,14 +1232,14 @@ export default function Home() {
 
           <div className="footer-contact">
             <h3>{t.footer.contact}</h3>
-            <p>
+            <a href={`mailto:${contactEmail}`}>
               <Mail size={15} />
-              hello@volnix.example
-            </p>
-            <p>
+              {contactEmail}
+            </a>
+            <a href={whatsappPhoneHref}>
               <Phone size={15} />
-              +389 70 123 456
-            </p>
+              {whatsappPhoneLabel}
+            </a>
             <p>
               <MapPin size={15} />
               Skopje, Macedonia
@@ -1272,10 +1276,12 @@ export default function Home() {
 
         <div className="footer-bottom">
           <span>{t.footer.rights}</span>
-          <div>
-            <a href="#">{t.footer.policy}</a>
-            <a href="#">{t.footer.terms}</a>
-          </div>
+          <span className="footer-credit">
+            Developed by{" "}
+            <a href="https://oninova.net" target="_blank" rel="noreferrer">
+              Oninova
+            </a>
+          </span>
         </div>
       </footer>
 

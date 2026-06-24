@@ -849,7 +849,7 @@ img {
   border-radius: 999px;
   padding: 0 20px;
   color: var(--green-800);
-  background: var(--brand-sunwash);
+  background: #eef1f0;
   font-size: 13px;
   font-weight: 800;
   backdrop-filter: blur(10px);
@@ -857,7 +857,7 @@ img {
 }
 
 .tag-row span:hover {
-  background: #ffffff;
+  background: #f6f7f6;
   transform: translateY(-2px);
 }
 
@@ -1186,10 +1186,11 @@ img {
 }
 
 .footer-links a,
+.footer-contact a,
 .footer-contact p {
   margin: 0;
   color: rgba(255, 255, 255, 0.7);
-  font-size: 14px;
+  font-size: 13px;
 }
 
 .footer-links a {
@@ -1207,10 +1208,37 @@ img {
   gap: 16px;
 }
 
+.footer-contact a,
 .footer-contact p {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
+  width: max-content;
+  max-width: 100%;
+  line-height: 1.25;
+}
+
+.footer-contact a {
+  padding-bottom: 2px;
+  border-bottom: 1px solid transparent;
+  white-space: nowrap;
+  transition: color 180ms ease, border-color 180ms ease, transform 180ms var(--ease-out);
+}
+
+.footer-contact a:hover {
+  color: #fff;
+  border-color: rgba(108, 180, 12, 0.82);
+  transform: translateX(3px);
+}
+
+.footer-contact a svg {
+  flex: 0 0 auto;
+  transition: color 180ms ease, transform 180ms var(--ease-out);
+}
+
+.footer-contact a:hover svg {
+  color: var(--brand-lime);
+  transform: scale(1.06);
 }
 
 .footer-subscribe form {
@@ -1265,9 +1293,17 @@ img {
   font-size: 13px;
 }
 
-.footer-bottom div {
-  display: flex;
-  gap: 28px;
+.footer-credit a {
+  color: var(--brand-lime);
+  font-weight: 800;
+  transition: color 180ms ease, text-decoration-color 180ms ease;
+}
+
+.footer-credit a:hover {
+  color: #9ee042;
+  text-decoration: underline;
+  text-decoration-color: rgba(158, 224, 66, 0.76);
+  text-underline-offset: 4px;
 }
 
 .whatsapp-float {
@@ -1784,6 +1820,7 @@ img {
   .footer-brand p,
   .footer-subscribe p,
   .footer-links a,
+  .footer-contact a,
   .footer-contact p {
     font-size: 11px;
   }
@@ -1809,11 +1846,6 @@ img {
     padding: 24px 0 34px;
     text-align: center;
     font-size: 10px;
-  }
-
-  .footer-bottom div {
-    justify-content: center;
-    gap: 18px;
   }
 
   .whatsapp-float {
