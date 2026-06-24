@@ -47,7 +47,7 @@ const contactEmail = "volnixmacedonia@gmail.com";
 const whatsappHref = "https://wa.me/38970465349";
 const whatsappPhoneHref = "tel:+38970465349";
 const facebookHref = "https://www.facebook.com/share/1ZG8ryttkt/?mibextid=wwXIfr";
-const instagramHref = "https://www.instagram.com/volnixmk?igsh=N2xqNHYwNXg3dWNp";
+const instagramHref = "https://www.instagram.com/volnixmk";
 const whatsappPhoneLabel = "+389 70 465 349";
 
 const partnerLogos = [
