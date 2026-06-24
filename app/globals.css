@@ -86,11 +86,13 @@ img {
   background: #fff;
 }
 
-@media (prefers-reduced-motion: no-preference) {
+@media (prefers-reduced-motion: no-preference) and (min-width: 981px) {
   .site-shell.is-motion-prep .site-header {
     transform: translate3d(0, -8px, 0);
   }
+}
 
+@media (prefers-reduced-motion: no-preference) {
   .site-shell.is-motion-prep .gsap-load {
     transform: translate3d(0, 16px, 0);
   }

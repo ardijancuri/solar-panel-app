@@ -754,6 +754,7 @@ export default function Home() {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
     ).matches;
+    const isMobileViewport = window.matchMedia("(max-width: 980px)").matches;
 
     gsap.registerPlugin(ScrollTrigger);
 
@@ -786,7 +787,9 @@ export default function Home() {
       }
 
       root.classList.add("is-gsap-loading");
-      gsap.set(".site-header", { y: -8 });
+      if (!isMobileViewport) {
+        gsap.set(".site-header", { y: -8 });
+      }
       gsap.set(".gsap-load", { y: 16 });
       gsap.set(".hero-media", { clipPath: "inset(0 0 0 100%)" });
       gsap.set(revealables, { autoAlpha: 0, y: 26 });
@@ -799,12 +802,15 @@ export default function Home() {
         }
       });
 
-      loadTimeline
-        .to(".site-header", {
+      if (!isMobileViewport) {
+        loadTimeline.to(".site-header", {
           y: 0,
           duration: 0.42,
           clearProps: "transform"
-        })
+        });
+      }
+
+      loadTimeline
         .to(
           ".gsap-load",
           {
@@ -813,7 +819,7 @@ export default function Home() {
             stagger: 0.06,
             clearProps: "transform"
           },
-          "-=0.14"
+          isMobileViewport ? 0 : "-=0.14"
         )
         .to(
           ".hero-media",
