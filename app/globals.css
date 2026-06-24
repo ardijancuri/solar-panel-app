@@ -1817,10 +1817,23 @@ img {
   }
 
   .whatsapp-float {
-    right: 18px;
-    bottom: 18px;
-    width: 54px;
-    height: 54px;
+    right: 26px;
+    bottom: 32px;
+    width: 76px;
+    height: 76px;
+  }
+
+  .whatsapp-bubble {
+    width: 35px;
+    height: 25px;
+    border-radius: 5px;
+  }
+
+  .whatsapp-bubble::after {
+    bottom: -8px;
+    left: 4px;
+    width: 15px;
+    height: 15px;
   }
 }
 

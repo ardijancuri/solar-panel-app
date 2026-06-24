@@ -45,7 +45,7 @@ const languages: { code: Lang; label: string }[] = [
   { code: "en", label: "EN" }
 ];
 
-const whatsappHref = "https://wa.me/38970123456";
+const whatsappHref = "https://wa.me/38970465349";
 
 const partnerLogos = [
   { name: "LONGi", src: "/images/partner-longi.png" },
