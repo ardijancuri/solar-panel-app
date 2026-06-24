@@ -1410,7 +1410,9 @@ img {
   }
 
   .site-header {
-    height: 58px;
+    top: 8px;
+    height: 66px;
+    margin: 8px auto 0;
     justify-content: flex-start;
     gap: 0;
   }
@@ -1426,17 +1428,26 @@ img {
   .mobile-header-actions {
     display: flex;
     margin-left: auto;
-    gap: 10px;
+    gap: 12px;
     align-items: center;
   }
 
   .mobile-language-switcher {
     display: inline-flex;
-    min-height: 36px;
+    min-height: 42px;
+    padding: 5px;
+  }
+
+  .mobile-language-switcher button {
+    min-width: 36px;
+    height: 30px;
+    font-size: 12px;
   }
 
   .menu-button {
     display: grid;
+    width: 44px;
+    height: 44px;
   }
 
   .brand {
@@ -1444,8 +1455,12 @@ img {
   }
 
   .site-header .brand-logo {
-    width: 86px;
-    height: 48px;
+    width: 100px;
+    height: 54px;
+  }
+
+  .mobile-panel {
+    top: 82px;
   }
 
   .eyebrow,
@@ -1456,14 +1471,17 @@ img {
   .hero {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    padding-top: 46px;
+    gap: 30px;
+    padding-top: 38px;
     padding-bottom: 46px;
     text-align: center;
   }
 
   .hero-copy {
-    display: contents;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
   }
 
   .hero-copy .eyebrow,
@@ -1475,24 +1493,26 @@ img {
   }
 
   .hero-copy .eyebrow {
-    margin-bottom: 0;
+    margin-bottom: 10px;
   }
 
   .hero h1 {
     max-width: 350px;
+    margin-bottom: 16px;
     font-size: 30px;
     line-height: 1.08;
   }
 
   .hero-body {
     max-width: 270px;
-    margin: 0;
+    margin: 0 0 18px;
     font-size: 12px;
     line-height: 1.75;
   }
 
   .hero .primary-cta {
     margin-top: 0;
+    margin-bottom: 18px;
   }
 
   .stats-strip {
@@ -1558,11 +1578,11 @@ img {
 
   .partner-logo {
     max-width: none;
-    min-height: 34px;
+    min-height: 42px;
   }
 
   .partner-logo img {
-    max-height: 24px;
+    max-height: 30px;
   }
 
   .benefits-grid {
@@ -1849,23 +1869,23 @@ img {
   }
 
   .whatsapp-float {
-    right: 26px;
-    bottom: 32px;
-    width: 76px;
-    height: 76px;
+    right: 22px;
+    bottom: 28px;
+    width: 64px;
+    height: 64px;
   }
 
   .whatsapp-bubble {
-    width: 35px;
-    height: 25px;
-    border-radius: 5px;
+    width: 30px;
+    height: 22px;
+    border-radius: 4px;
   }
 
   .whatsapp-bubble::after {
-    bottom: -8px;
-    left: 4px;
-    width: 15px;
-    height: 15px;
+    bottom: -7px;
+    left: 3px;
+    width: 13px;
+    height: 13px;
   }
 }
 

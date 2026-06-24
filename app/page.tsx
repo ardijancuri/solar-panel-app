@@ -266,39 +266,39 @@ const dictionaries = {
       contact: "Kontakt"
     },
     hero: {
-      eyebrow: "Energji e re per sistemin tuaj",
-      title: "Energji e paster e rinovueshme pa kufi",
+      eyebrow: "Energji e re për sistemin tuaj",
+      title: "Energji e pastër e rinovueshme pa kufij",
       body:
-        "Volnix ofron zgjidhje solare te besueshme dhe me performance te larte per shtepi, biznese dhe nje te ardhme me te gjelber.",
+        "Volnix ofron zgjidhje solare të besueshme dhe me performancë të lartë për shtëpi, biznese dhe një të ardhme më të gjelbër.",
       cta: "Konsultim falas",
       stats: [
         { value: "10k+", label: "instalime" },
-        { value: "100k", label: "kWh te kursyera" },
-        { value: "70%", label: "kosto me e ulet" }
+        { value: "100k", label: "kWh të kursyera" },
+        { value: "70%", label: "kosto më e ulët" }
       ]
     },
     partners: ["Lago ipsum", "Logipsum", "logo ipsum", "Logipsum", "Logoipsum"],
     benefits: {
-      eyebrow: "/ perfitime",
-      title: "Perfitimet e energjise solare me Volnix",
+      eyebrow: "/ përfitime",
+      title: "Përfitimet e energjisë solare me Volnix",
       body:
-        "Shfrytezoni fuqine e energjise solare me zgjidhje te krijuara per vlere afatgjate.",
+        "Shfrytëzoni fuqinë e energjisë solare me zgjidhje të krijuara për vlerë afatgjatë.",
       items: [
         {
-          title: "Kursime te ndjeshme",
-          body: "Ulni faturat mujore me prodhim inteligjent te energjise suaj."
+          title: "Kursime të ndjeshme",
+          body: "Ulni faturat mujore me prodhim inteligjent të energjisë suaj."
         },
         {
-          title: "Pavaresi energjetike",
-          body: "Krijoni sistem stabil qe ul varesine nga rrjeti."
+          title: "Pavarësi energjetike",
+          body: "Krijoni sistem stabil që ul varësinë nga rrjeti."
         },
         {
           title: "Zgjidhje ekologjike",
-          body: "Gjurmë me e ulet karboni dhe mjedis me i paster."
+          body: "Gjurmë më e ulët karboni dhe mjedis më i pastër."
         },
         {
-          title: "Vlere me e larte",
-          body: "Rritni vleren e objektit me infrastrukture moderne solare."
+          title: "Vlerë më e lartë",
+          body: "Rritni vlerën e objektit me infrastrukturë moderne solare."
         }
       ]
     },
@@ -308,63 +308,63 @@ const dictionaries = {
       items: [
         {
           title: "Solar rezidencial",
-          body: "Panele efikase per shtepi me kursime te perditshme."
+          body: "Panele efikase për shtëpi me kursime të përditshme."
         },
         {
           title: "Solar komercial",
-          body: "Sisteme per kompani qe kerkojne energji te parashikueshme."
+          body: "Sisteme për kompani që kërkojnë energji të parashikueshme."
         },
         {
           title: "Ruajtje energjie",
-          body: "Bateri qe ruajne energjine kur ju duhet me shume."
+          body: "Bateri që ruajnë energjinë kur ju duhet më shumë."
         },
         {
           title: "Karikues EV",
-          body: "Stacione te integruara per automjete elektrike."
+          body: "Stacione të integruara për automjete elektrike."
         }
       ]
     },
     projects: [
       {
-        title: "Instalim solar ne cati",
-        location: "Tetovo"
+        title: "Instalim solar në çati",
+        location: "Tetovë"
       },
       {
-        title: "Instalim kompakt solar ne cati",
+        title: "Instalim kompakt solar në çati",
         location: "Gostivar"
       },
       {
-        title: "Sistem solar shtepiak ne cati",
-        location: "Kerqove"
+        title: "Sistem solar shtëpiak në çati",
+        location: "Kërçovë"
       },
       {
-        title: "Instalim solar per shtepi familjare",
+        title: "Instalim solar për shtëpi familjare",
         location: "Shtip"
       }
     ],
     projectTags: ["Solar rezidencial", "Energji solare", "Kursime"],
     projectText:
-      "Sistem solar ne cati i pershtatur per konsumin ditor te shtepise, prodhim te paster dhe kursim afatgjate.",
+      "Sistem solar në çati, i përshtatur për konsumin ditor të shtëpisë, prodhim të pastër dhe kursim afatgjatë.",
     success: {
       eyebrow: "/ histori",
       title: "Histori suksesi",
-      quoteTitle: "Ndryshim i madh per shtepine time!",
+      quoteTitle: "Ndryshim i madh për shtëpinë time!",
       quote:
-        "Kalimi ne Volnix ishte vendimi me i mire. Fatura e energjise ra ndjeshem dhe tani kontribuojme per nje planet me te paster. Ekipi ishte profesional dhe instalimi shkoi pa probleme.",
+        "Kalimi në Volnix ishte vendimi më i mirë. Fatura e energjisë ra ndjeshëm dhe tani kontribuojmë për një planet më të pastër. Ekipi ishte profesional dhe instalimi shkoi pa probleme.",
       author: "John Darrell",
       location: "Los Angeles, CA"
     },
     steps: {
       eyebrow: "/ procesi",
-      title: "Kalimi ne solar ne 3 hapa te lehte",
+      title: "Kalimi në solar në 3 hapa të lehtë",
       items: [
         {
           title: "01 Konsultim",
-          body: "Analizojme nevojat tuaja dhe planifikojme sistemin me te mire."
+          body: "Analizojmë nevojat tuaja dhe planifikojmë sistemin më të mirë."
         },
         {
           title: "02 Instalimi",
-          body: "Ekipi yne vendos zgjidhjen me kujdes dhe pa vonesa."
+          body: "Ekipi ynë vendos zgjidhjen me kujdes dhe pa vonesa."
         },
         {
           title: "03 Filloni kursimin",
@@ -374,68 +374,68 @@ const dictionaries = {
     },
     faq: {
       eyebrow: "/ pyetje",
-      title: "Pyetje te shpeshta",
+      title: "Pyetje të shpeshta",
       items: [
         {
-          q: "Cfare e ben Volnix ndryshe nga ofruesit e tjere?",
+          q: "Çfarë e bën Volnix ndryshe nga ofruesit e tjerë?",
           a:
-            "Kombinojme projektim te kujdesshem, komponente cilesore dhe mbeshtetje lokale."
+            "Kombinojmë projektim të kujdesshëm, komponentë cilësorë dhe mbështetje lokale."
         },
         {
-          q: "Cfare zgjidhjesh solare ofron Volnix?",
+          q: "Çfarë zgjidhjesh solare ofron Volnix?",
           a:
-            "Ofrojme sisteme per shtepi, biznese, bateri dhe karikues EV te lidhur me energjine solare."
+            "Ofrojmë sisteme për shtëpi, biznese, bateri dhe karikues EV të lidhur me energjinë solare."
         },
         {
           q: "Si funksionon konsultimi?",
           a:
-            "Analizojme objektin, konsumin dhe qellimet, pastaj pergatisim oferte te qarte."
+            "Analizojmë objektin, konsumin dhe qëllimet, pastaj përgatisim ofertë të qartë."
         },
         {
-          q: "Sa kushton nje sistem solar Volnix?",
+          q: "Sa kushton një sistem solar Volnix?",
           a:
-            "Varet nga madhesia dhe pajisjet. Pas konsultimit merrni kalkulim te sakte."
+            "Varet nga madhësia dhe pajisjet. Pas konsultimit merrni kalkulim të saktë."
         }
       ]
     },
     blog: {
       eyebrow: "/ blog",
-      title: "Qendroni te informuar me keshilla ekspertesh per energjine solare",
+      title: "Qëndroni të informuar me këshilla ekspertësh për energjinë solare",
       posts: [
         {
           meta: "Investime dhe kursime / 20 shtator 2025",
-          title: "Nxitje dhe subvencione qeveritare per energji solare"
+          title: "Nxitje dhe subvencione qeveritare për energji solare"
         },
         {
           meta: "Kursime solare / 22 janar 2025",
-          title: "Si energjia solare mund t'ju kurseje mijera"
+          title: "Si energjia solare mund t'ju kursejë mijëra"
         },
         {
           meta: "Zgjidhje ekologjike / 18 janar 2025",
-          title: "5 arsye per te investuar ne panele solare ne 2025"
+          title: "5 arsye për të investuar në panele solare në 2025"
         }
       ]
     },
     cta: {
-      eyebrow: "Energji e re per sistemin tuaj",
-      title: "Merrni oferte falas sot!",
+      eyebrow: "Energji e re për sistemin tuaj",
+      title: "Merrni ofertë falas sot!",
       body:
-        "Jeni te interesuar per solar? Le te gjejme zgjidhjen e duhur per shtepine ose biznesin tuaj.",
-      button: "Kerko oferte"
+        "Jeni të interesuar për solar? Le të gjejmë zgjidhjen e duhur për shtëpinë ose biznesin tuaj.",
+      button: "Kërko ofertë"
     },
     footer: {
       text:
-        "Krijojme zgjidhje solare qe ulin konsumin, stabilizojne kostot dhe sjellin energji me te paster.",
-      quick: "Lidhje te shpejta",
+        "Krijojmë zgjidhje solare që ulin konsumin, stabilizojnë kostot dhe sjellin energji më të pastër.",
+      quick: "Lidhje të shpejta",
       contact: "Kontakt",
       subscribe: "Abonohu",
-      subscribeText: "Merrni lajme per keshilla solare, subvencione dhe zgjidhje energjie.",
+      subscribeText: "Merrni lajme për këshilla solare, subvencione dhe zgjidhje energjie.",
       email: "Email-i juaj",
-      send: "Dergo",
-      sent: "Derguar",
+      send: "Dërgo",
+      sent: "Dërguar",
       socials: "Na ndiqni",
-      rights: "© 2026 Volnix Solar Energy. Te gjitha te drejtat e rezervuara.",
-      policy: "Privatesia",
+      rights: "© 2026 Volnix Solar Energy. Të gjitha të drejtat e rezervuara.",
+      policy: "Privatësia",
       terms: "Kushtet"
     }
   },
@@ -713,6 +713,22 @@ export default function Home() {
     showHeroSlide(deltaX < 0 ? 1 : -1);
   };
 
+  useLayoutEffect(() => {
+    const isMobile = window.matchMedia("(max-width: 980px)").matches;
+    if (!isMobile) return;
+
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
+    }
+
+    window.scrollTo(0, 0);
+    const frame = window.requestAnimationFrame(() => window.scrollTo(0, 0));
+
+    return () => {
+      window.cancelAnimationFrame(frame);
+    };
+  }, []);
+
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia(
       "(prefers-reduced-motion: reduce)"
@@ -948,7 +964,7 @@ export default function Home() {
             aria-expanded={mobileOpen}
             onClick={() => setMobileOpen((value) => !value)}
           >
-            {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </header>
@@ -972,7 +988,7 @@ export default function Home() {
           <p className="eyebrow gsap-load">{t.hero.eyebrow}</p>
           <h1 className="gsap-load">{t.hero.title}</h1>
           <p className="hero-body gsap-load">{t.hero.body}</p>
-          <a href="#contact" className="primary-cta gsap-load">
+          <a href={whatsappPhoneHref} className="primary-cta gsap-load">
             {t.hero.cta}
             <span>
               <ArrowRight size={15} />
@@ -1195,7 +1211,7 @@ export default function Home() {
         <p className="eyebrow">{t.cta.eyebrow}</p>
         <h2>{t.cta.title}</h2>
         <p>{t.cta.body}</p>
-        <a href={`mailto:${contactEmail}`} className="primary-cta">
+        <a href={whatsappPhoneHref} className="primary-cta">
           {t.cta.button}
           <span>
             <ArrowRight size={15} />
